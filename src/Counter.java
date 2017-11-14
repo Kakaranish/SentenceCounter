@@ -56,9 +56,7 @@ public class Counter {
 								sentenceLength.put(words_num, 1);
 							else
 								sentenceLength.put(words_num, sentenceLength.get(words_num) + 1);
-							
-							//System.out.println("Słów w zdaniu nr"+sentence_num+" jest "+words_num);
-							
+												
 							words_num = 0;
 							prevSpecial = true;
 							nextIteration = true;
@@ -77,18 +75,23 @@ public class Counter {
 		Iterator it = sentenceLength.entrySet().iterator();
 		System.out.println("Ksiazka: "+filename);
 		System.out.println("Calkowitka ilosc wyrazow = "+sentence_num);
-		System.out.println("Statystyka dlugosci zdań - (ilość wyrazów, ilość wystąpień zdania o podanej ilości wyrazów): ");
-		
+		System.out.println("Statystyka dlugosci zdań:");
 		while(it.hasNext()){
 			Map.Entry pair = (Map.Entry)it.next();
-			System.out.println(pair.getKey()+","+pair.getValue());
+			System.out.println(pair.getKey()+" słów "+(Integer)pair.getValue()/new Float(sentence_num) * 100+"%");
 		}
 	}
 	
 	public static void main(String[] args){
-		
+		System.out.println("Ksiazki Wiliama Shakespearea");
 		count("ksiazki/tymon-atenczyk.txt");
 		count("ksiazki/krol-ryszard.txt");	
 		count("ksiazki/makbet.txt");	
+		System.out.println("\n\n\nKsiazki Stanisława Jachowicza");
+		count("ksiazki/dwa-pieski.txt");
+		count("ksiazki/dwa-plugi.txt");
+		System.out.println("\n\n\nKsiazki Ignacego Krasickiego");
+		count("ksiazki/satyry-czesc-druga-malzenstwo.txt");
+		count("ksiazki/satyry-czesc-druga-medrek.txt");
 	}
 }
